@@ -12,10 +12,12 @@
   <input id="email" type="email" placeholder="Email"><br><br>
   <input id="password" type="password" placeholder="Password"><br><br>
 
-  <button onclick="signUp()">Sign Up</button>
+  <!-- REMOVE inline onclick -->
+  <button id="signupBtn">Sign Up</button>
 
   <p id="message"></p>
 
+  <!-- SCRIPT MOVED TO BOTTOM -->
   <script>
     const supabase = supabase.createClient(
       "https://fjkvbkspjcvfdnlxajty.supabase.co",
@@ -41,6 +43,9 @@
         msg.style.color = "green";
       }
     }
+
+    // CONNECT BUTTON TO FUNCTION
+    document.getElementById("signupBtn").addEventListener("click", signUp);
   </script>
 </body>
 </html>
