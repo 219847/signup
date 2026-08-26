@@ -13,3 +13,20 @@
 
   document.body.appendChild(footer);
 })();
+(function() {
+  const clock = document.createElement("div");
+  clock.style.textAlign = "center";
+  clock.style.color = "#777";
+  clock.style.fontSize = "12px";
+  clock.style.marginTop = "6px";
+
+  function updateClock() {
+    const now = new Date();
+    clock.textContent = now.toLocaleTimeString();
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  document.body.appendChild(clock);
+})();
