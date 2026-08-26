@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+  <h1>Create an Account</h1>
+
+  <input id="email" type="email" placeholder="Email"><br><br>
+  <input id="password" type="password" placeholder="Password"><br><br>
+
+  <button onclick="signUp()">Sign Up</button>
+
+  <p id="message"></p>
+
+  <script>
+    const supabase = supabase.createClient(
+      "https://fjkvbkspjcvfdnlxajty.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqa3Zia3NwamN2ZmRubHhhanR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2OTk1NDMsImV4cCI6MjEwMzI3NTU0M30.oOQlwwilXljZ-b7VIFC-dAasmaAyDPwvBwgEnEOgovs"
+    );
+
+    async function signUp() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password
+      });
+
+      const msg = document.getElementById("message");
+
+      if (error) {
+        msg.textContent = "Error: " + error.message;
+        msg.style.color = "red";
+      } else {
+        msg.textContent = "Signup successful! Check your email to confirm.";
+        msg.style.color = "green";
+      }
+    }
+  </script>
+</body>
+</html>
