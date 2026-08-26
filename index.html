@@ -18,34 +18,34 @@
   <p id="message"></p>
 
   <!-- SCRIPT MOVED TO BOTTOM -->
-  <script>
-    const supabase = supabase.createClient(
-      "https://fjkvbkspjcvfdnlxajty.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqa3Zia3NwamN2ZmRubHhhanR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2OTk1NDMsImV4cCI6MjEwMzI3NTU0M30.oOQlwwilXljZ-b7VIFC-dAasmaAyDPwvBwgEnEOgovs"
-    );
+ <script>
+  const client = supabase.createClient(
+    "https://fjkvbkspjcvfdnlxajty.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  );
 
-    async function signUp() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+  async function signUp() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-      const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password
-      });
+    const { data, error } = await client.auth.signUp({
+      email,
+      password
+    });
 
-      const msg = document.getElementById("message");
+    const msg = document.getElementById("message");
 
-      if (error) {
-        msg.textContent = "Error: " + error.message;
-        msg.style.color = "red";
-      } else {
-        msg.textContent = "Signup successful! Check your email to confirm.";
-        msg.style.color = "green";
-      }
+    if (error) {
+      msg.textContent = "Error: " + error.message;
+      msg.style.color = "red";
+    } else {
+      msg.textContent = "Signup successful! Check your email to confirm.";
+      msg.style.color = "green";
     }
+  }
 
-    // CONNECT BUTTON TO FUNCTION
-    document.getElementById("signupBtn").addEventListener("click", signUp);
-  </script>
+  document.getElementById("signupBtn").addEventListener("click", signUp);
+</script>
+
 </body>
 </html>
