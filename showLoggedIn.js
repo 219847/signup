@@ -9,6 +9,6 @@ async function showLoggedInUser() {
   const user = data.user;
 
   document.getElementById("userInfo").textContent =
-    "Logged in as: " + user.email;
+    "Logged in as: " + user.email+"\nClear cookies to log out.";
 }
 showLoggedInUser();
